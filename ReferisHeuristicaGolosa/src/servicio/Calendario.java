@@ -1,6 +1,5 @@
 package servicio;
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -16,8 +15,8 @@ public class Calendario implements Serializable{
 	private ArrayList<Arbitro> arbitros;
 	
 	public Calendario(ArrayList<Equipo> equipos,ArrayList<Fecha> fechas) {
-		if(!(equipos.size()%2 ==0) && equipos.size()>0 ) {
-			throw new IllegalArgumentException("La cantidad de equipos debe ser par y mayor que 1");
+		if(!cumpleCondiciones(equipos, fechas)) {
+			throw new IllegalArgumentException("La cantidad de equipos debe ser par ,mayor que 1,todos los equipos tienen que estar 1 vez por fecha");
 		}
 		this.equipos=equipos;
 		this.fechas=fechas;
@@ -47,67 +46,19 @@ public class Calendario implements Serializable{
 		}
 		return nueva;
 	}
-	public void serializar(String nombreArchTxt){
-		try // Debe estar en un try/catch
-		{
-		 FileOutputStream fos = new FileOutputStream(nombreArchTxt);
-		 ObjectOutputStream out = new ObjectOutputStream(fos);
-		 out.writeObject(this);
-		 out.close();
-		}
-		catch (Exception ex)
-		{
-		ex.printStackTrace();
-		}
-
-	}
-	//	private ArrayList<Fecha> generarFechas() {
-//		ArrayList<Partido> partidosTotal=generarPartidos();
-//		ArrayList<Fecha> fechas=new ArrayList<Fecha>();
-//		for(int i=0;i<equipos.size()-1;i++) {
-//			fechas.add(new Fecha(generarFecha(partidosTotal)));
+//	public void serializar(String nombreArchTxt){
+//		try // Debe estar en un try/catch
+//		{
+//		 FileOutputStream fos = new FileOutputStream(nombreArchTxt);
+//		 ObjectOutputStream out = new ObjectOutputStream(fos);
+//		 out.writeObject(this);
+//		 out.close();
 //		}
-//		return fechas;
-//	}
-//	
-//	private ArrayList<Partido> generarFecha(ArrayList<Partido> partidosTotal) {
-//		ArrayList<Partido> nueva=new ArrayList<Partido>();
-//		ArrayList<Partido> guia=new ArrayList<Partido>();;
-//		for (int i=0;i<equipos.size()/2;i++){
-//			for (int j=0;j<partidosTotal.size();j++) {
-//				if(!guia.contains(partidosTotal.get(j))&& noUsadosEnEstaFecha(partidosTotal.get(j).getLocal().getNombre(),partidosTotal.get(j).getVisitante().getNombre(),guia)) {
-//					nueva.add(partidosTotal.get(j));
-//					guia.add(partidosTotal.get(j));
-//					j=partidosTotal.size();
-//				}
-//			}
+//		catch (Exception ex)
+//		{
+//		ex.printStackTrace();
 //		}
-//		for (Partido p: guia) {
-//			partidosTotal.remove(p);
-//		}
-//		return nueva;
-//	}
-//	private boolean noUsadosEnEstaFecha(String nombre, String nombre2, ArrayList<Partido> guia) {
-//		for (Partido partido : guia) {
-//			if(partido.getLocal().getNombre().equals(nombre)||partido.getLocal().getNombre().equals(nombre2)||partido.getVisitante().getNombre().equals(nombre)|| partido.getVisitante().getNombre().equals(nombre2)) {
-//				return false;
-//			}
-//		}
-//		return true;
-//	}
-//	private ArrayList<Partido> generarPartidos() {
-//		ArrayList<Partido> partidos=new ArrayList<Partido>();
-//		for(int i=0;i<equipos.size();i++) {
-//			for (int j=0;j<equipos.size();j++) {
-//				if(i!=j) {
-//					Partido nueva=new Partido(equipos.get(i),equipos.get(j));
-//					if(!(partidos.contains(nueva))) {
-//						partidos.add(nueva);
-//					}
-//				}
-//			}
-//		}
-//		return partidos;
+//
 //	}
 	private ArrayList<Arbitro> listaArbitros() {
 		ArrayList<Arbitro> nueva=new ArrayList<Arbitro>();
@@ -121,6 +72,23 @@ public class Calendario implements Serializable{
 			nueva.add(new Arbitro(equipos.size(),2));
 		}
 		return nueva;
+	}
+	private boolean cumpleCondiciones(ArrayList<Equipo> equipos,ArrayList<Fecha> fechas) {
+		for(Equipo equipo: equipos) {
+			int cont=0;
+			for (Fecha fecha : fechas) {
+				for(Partido partido:fecha.getPartidos()) {
+					if(partido.getLocal().getNombre().equals(equipo.getNombre()) || partido.getVisitante().getNombre().equals(equipo.getNombre())) {
+						cont+=1;
+					}
+				}
+				
+			}
+			if(cont!=fechas.size()) {
+				return false;
+			}
+		}	
+		return equipos.size()==fechas.get(0).getPartidos().size()*2 && equipos.size()==fechas.size()+1;
 	}
 	
 }

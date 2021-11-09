@@ -1,9 +1,7 @@
 package servicio;
-
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 class EquipoTest {
 
@@ -13,7 +11,6 @@ class EquipoTest {
 		Equipo e2=new Equipo("La Estrella");
 		
 		assertTrue(e1.equals(e2));
-		
 	}
 	@Test
 	void diferentes() {
@@ -21,7 +18,6 @@ class EquipoTest {
 		Equipo e2=new Equipo("Los Paraisos");
 		
 		assertFalse(e1.equals(e2));
-		
 	}
 
 }

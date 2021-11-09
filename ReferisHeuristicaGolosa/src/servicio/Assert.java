@@ -1,7 +1,8 @@
 package servicio;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.ArrayList;
 
 public class Assert
