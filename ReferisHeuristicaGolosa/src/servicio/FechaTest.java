@@ -6,17 +6,17 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-class FechaTest {
+public class FechaTest {
 
 	@Test
-	void iguales() {
+	public void iguales() {
 		Fecha fecha1=generarfecha1();
 		Fecha fecha2=generarfecha2();
 		
 		assertTrue(fecha1.equals(fecha2));
 	}
 	@Test
-	void  dferentes() {
+	public void  dferentes() {
 		Fecha fecha1=generarfecha1();
 		Fecha fecha2=generarfecha3();
 		

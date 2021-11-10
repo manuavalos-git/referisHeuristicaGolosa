@@ -1,6 +1,5 @@
 package servicio;
 
-import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -12,12 +11,14 @@ public class CalendarioTest {
 	@Test (expected = IllegalArgumentException.class)
 	public void noCumpleCantEquipos() {
 		
+		@SuppressWarnings("unused")
 		Calendario calendario=new Calendario(generarEquipos(), generarfechas());
 	
 	}
 	@Test (expected = IllegalArgumentException.class)
 	public void noCumpleFechas() {
 		
+		@SuppressWarnings("unused")
 		Calendario calendario=new Calendario(generarEquipos2(), generarfechas2());
 	
 	}

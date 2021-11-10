@@ -25,41 +25,35 @@ public class Calendario implements Serializable{
 	public Calendario() {
 	
 	}
+	
 	public ArrayList<Arbitro> copiaArbitros() {
 		ArrayList<Arbitro> nueva=new ArrayList<Arbitro>();
 		for (Arbitro arbitro : arbitros) {
-			nueva.add(arbitro);
+			nueva.add(new Arbitro(arbitro.getEquipos().length,arbitro.getNombre()));
 		}
 		return nueva;
 	}
 	public ArrayList<Equipo> copiaEquipos() {
 		ArrayList<Equipo> nueva=new ArrayList<Equipo>();
 		for (Equipo equipo: equipos) {
-			nueva.add(equipo);
+			nueva.add(new Equipo(equipo.getNombre()));
 		}
 		return nueva;
 	}
 	public ArrayList<Fecha> copiaFechas() {
 		ArrayList<Fecha> nueva=new ArrayList<Fecha>();
 		for (Fecha fecha: fechas) {
-			nueva.add(fecha);
+			nueva.add(new Fecha(copiarPartidos(fecha.getPartidos())));
 		}
 		return nueva;
 	}
-//	public void serializar(String nombreArchTxt){
-//		try // Debe estar en un try/catch
-//		{
-//		 FileOutputStream fos = new FileOutputStream(nombreArchTxt);
-//		 ObjectOutputStream out = new ObjectOutputStream(fos);
-//		 out.writeObject(this);
-//		 out.close();
-//		}
-//		catch (Exception ex)
-//		{
-//		ex.printStackTrace();
-//		}
-//
-//	}
+	private ArrayList<Partido> copiarPartidos(ArrayList<Partido> partidos) {
+		ArrayList<Partido> nueva=new ArrayList<Partido>();
+		for (Partido partido : partidos) {
+			nueva.add(new Partido(partido.getLocal(), partido.getVisitante()));
+		}
+		return nueva;
+	}
 	private ArrayList<Arbitro> listaArbitros() {
 		ArrayList<Arbitro> nueva=new ArrayList<Arbitro>();
 		if(equipos.size()>2) {	

@@ -6,28 +6,28 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-class SolverArbitroTest {
+public class SolverArbitroTest {
 
 	@Test
-	void sinSolver() {
+	public void sinSolver() {
 		Calendario calendario=leerSerializado("C:\\Users\\alumno\\git\\referisHeuristicaGolosa\\ReferisHeuristicaGolosa\\src\\servicio\\calendarioLigaEspañola.ddr");
 	
 		Assert.todosCeros(calendario);
 	}
 	@Test
-	void sinCeros() {
+	public void sinCeros() {
 		ArrayList<Fecha> lista=listaFechas();
 		
 		Assert.sinCeros(lista);
 	}
 	@Test
-	void primerFechaEscalonada() {
+	public void primerFechaEscalonada() {
 		ArrayList<Fecha> lista=listaFechas();
 		
 		Assert.fechaEscalonada(lista);
 	}
 	@Test
-	void todasDiferentes() {
+	public void todasDiferentes() {
 		ArrayList<Fecha> lista=listaFechas();
 		
 		Assert.fechasDiferentes(lista);

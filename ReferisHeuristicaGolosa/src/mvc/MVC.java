@@ -11,7 +11,10 @@ public class MVC {
 		
 		//inicializo objetos
 		Campeonato campeonato=new Campeonato();
-		Controlador controlador=new Controlador(campeonato);
+		String [] ubicaciones={"C:\\Users\\alumno\\git\\referisHeuristicaGolosa\\ReferisHeuristicaGolosa\\src\\servicio\\calendarioLigaEspañola.ddr"
+					,"C:\\Users\\alumno\\git\\referisHeuristicaGolosa\\ReferisHeuristicaGolosa\\src\\servicio\\calendarioPremierLeague.ddr"
+					,"C:\\Users\\alumno\\git\\referisHeuristicaGolosa\\ReferisHeuristicaGolosa\\src\\servicio\\calendarioTorneoArgentina.ddr"};
+		Controlador controlador=new Controlador(campeonato, ubicaciones);
 		
 		try
 		 {
