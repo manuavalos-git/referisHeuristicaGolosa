@@ -68,7 +68,6 @@ public class Controlador {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				asignar=false;
-				fecha=0;
 				campeonato.getTable().setModel(new DefaultTableModel(
 					fechas(campeonato.getSpinner().getValue().toString()),
 					cabecera(campeonato.getSpinner().getValue().toString())
@@ -77,7 +76,9 @@ public class Controlador {
 				campeonato.getScrollPane().setViewportView(campeonato.getTable());
 				campeonato.getBotonMostrarCalendarioSinArbitros().setVisible(false);
 				campeonato.getBotonSiguiente().setVisible(true);
+				if(fecha==0) {
 				campeonato.getBotonAnterior().setVisible(false);
+				}
 				campeonato.getBotonMostrarArbitros().setVisible(true);
 			}
 		};

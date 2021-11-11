@@ -14,7 +14,6 @@ import javax.swing.SwingConstants;
 import java.awt.Color;
 import java.awt.Insets;
 import javax.swing.JSpinner;
-import javax.swing.UIManager;
 
 
 public class Campeonato {
@@ -43,13 +42,12 @@ public class Campeonato {
 	private void initialize() {
 		this.frmCampenato = new JFrame();
 		frmCampenato.setResizable(false);
-//		frmCampenato.setIconImage(Toolkit.getDefaultToolkit().getImage(Campeonato.class.getResource("/multimedia/icono.png")));
 		frmCampenato.setTitle("Campeonatos");
 		frmCampenato.setBounds(100, 100, 845, 372);
 		frmCampenato.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 	    this.panel = new JPanel();
-	    panel.setBackground(new Color(255, 228, 225));
+	    panel.setBackground(new Color(109,166,145));
 		frmCampenato.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
@@ -59,7 +57,8 @@ public class Campeonato {
 		botonEmpezar.setMargin(new Insets(7, 14, 7, 14));
 		botonEmpezar.setIconTextGap(0);
 		botonEmpezar.setBorder(null);
-		botonEmpezar.setBackground(new Color(176, 224, 230));
+		botonEmpezar.setBackground(new Color(255,176,32));
+		botonEmpezar.setForeground(new Color(103,37,6));
 		botonEmpezar.setFont(new Font("Segoe UI", Font.BOLD, 20));
 		botonEmpezar.setText("Empezar");
 		botonEmpezar.setBounds(352, 263, 121, 39);
@@ -68,8 +67,8 @@ public class Campeonato {
 		this.botonMostrarCalendarioSinArbitros = new JButton();
 		botonMostrarCalendarioSinArbitros.setFocusable(false);
 		botonMostrarCalendarioSinArbitros.setBorder(null);
-		botonMostrarCalendarioSinArbitros.setForeground(new Color(0, 0, 0));
-		botonMostrarCalendarioSinArbitros.setBackground(new Color(176, 224, 230));
+		botonMostrarCalendarioSinArbitros.setBackground(new Color(255,176,32));
+		botonMostrarCalendarioSinArbitros.setForeground(new Color(103,37,6));
 		botonMostrarCalendarioSinArbitros.setFont(new Font("Segoe UI", Font.BOLD, 20));
 		botonMostrarCalendarioSinArbitros.setText("Sin Arbitros");
 		botonMostrarCalendarioSinArbitros.setBounds(541, 136, 263, 32);
@@ -80,25 +79,27 @@ public class Campeonato {
 		botonMostrarArbitros.setFont(new Font("Segoe UI", Font.BOLD, 20));
 		botonMostrarArbitros.setFocusable(false);
 		botonMostrarArbitros.setBorder(null);
-		botonMostrarArbitros.setBackground(new Color(176, 224, 230));
+		botonMostrarArbitros.setBackground(new Color(255,176,32));
+		botonMostrarArbitros.setForeground(new Color(103,37,6));
 		botonMostrarArbitros.setText("Asignar arbitros");
 		botonMostrarArbitros.setBounds(541, 136, 263, 32);
 		panel.add(botonMostrarArbitros);
 		botonMostrarArbitros.setVisible(false);
 		
 		this.scrollPane = new JScrollPane();
-		scrollPane.setBackground(new Color(255, 240, 245));
+		scrollPane.setBackground(new Color(171,233,210));
 		scrollPane.setFocusable(false);
 		scrollPane.setWheelScrollingEnabled(false);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 		scrollPane.setBounds(10, 72, 506, 155);
-		scrollPane.getViewport().setBackground(new Color(255, 240, 245));
+		scrollPane.getViewport().setBackground(new Color(171,233,210));
 		scrollPane.setVisible(false);
 		panel.add(scrollPane);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 		
 		this.lblTitulo = new JLabel("Campeonatos");
 		lblTitulo.setBounds(95, 37, 635, 215);
+		lblTitulo.setForeground(new Color(103,37,6));
 		panel.add(lblTitulo);
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulo.setFont(new Font("Segoe UI", Font.BOLD, 90));
@@ -107,13 +108,17 @@ public class Campeonato {
 		lblCampeonato.setFont(new Font("Segoe UI", Font.BOLD, 25));
 		lblCampeonato.setHorizontalAlignment(SwingConstants.LEFT);
 		lblCampeonato.setBounds(10, 22, 506, 39);
+		lblCampeonato.setForeground(new Color(103,37,6));
 		lblCampeonato.setVisible(false);
 		panel.add(lblCampeonato);
 		
 		this.spinner = new JSpinner();
-		spinner.setBorder(UIManager.getBorder("EditorPane.border"));
+		spinner.setRequestFocusEnabled(false);
+		spinner.setBorder(null);
 		spinner.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		spinner.setVisible(false);
+		spinner.setBackground(new Color(171,233,210));
+		spinner.setForeground(new Color(171,233,210));;
 		spinner.setBounds(541, 179, 263, 46);
 		panel.add(spinner);
 		
@@ -126,7 +131,8 @@ public class Campeonato {
 		botonSiguiente.setFont(new Font("Segoe UI", Font.BOLD, 20));
 		botonSiguiente.setFocusable(false);
 		botonSiguiente.setBorder(null);
-		botonSiguiente.setBackground(new Color(176, 224, 230));
+		botonSiguiente.setBackground(new Color(255,176,32));
+		botonSiguiente.setForeground(new Color(103,37,6));
 		botonSiguiente.setBounds(352, 263, 164, 39);
 		panel.add(botonSiguiente);
 		
@@ -139,20 +145,21 @@ public class Campeonato {
 		botonAnterior.setFont(new Font("Segoe UI", Font.BOLD, 20));
 		botonAnterior.setFocusable(false);
 		botonAnterior.setBorder(null);
-		botonAnterior.setBackground(new Color(176, 224, 230));
+		botonAnterior.setBackground(new Color(255,176,32));
+		botonAnterior.setForeground(new Color(103,37,6));
 		botonAnterior.setBounds(10, 263, 164, 39);
 		panel.add(botonAnterior);
 	
 		
 		this.table = new JTable();
-		table.setBackground(new Color(255, 240, 245));
+		table.setBackground(new Color(171,233,210));
 		table.setFocusable(false);
 		table.setAutoscrolls(false);
 		table.setRowHeight(25);
 		table.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 17));
 		table.getTableHeader().setOpaque(false);
 		table.getTableHeader().setBorder(null);
-		table.getTableHeader().setBackground(new Color(176, 224, 230));
+		table.getTableHeader().setBackground(new Color(255,176,32));
 		table.setRowSelectionAllowed(false);
 		
 		
