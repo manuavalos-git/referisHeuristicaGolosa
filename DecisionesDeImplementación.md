@@ -1,7 +1,7 @@
 
 # Lautaro Avalos com1
 ## Decisiones de implementación y desarrollo
-           referisHeuristicaGolosa
+##         referisHeuristicaGolosa
 
 ### Campeonato
 Aquí se inicializan todos los objetos presentes en la UI con
